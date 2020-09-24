@@ -1,0 +1,70 @@
+<html manifest="offline.manifest">
+<head><title></title>
+<meta charset="utf-8" />
+</head>
+<body>
+<script>
+let fwVersion = null;
+let alertfirmware = false;
+let nb = 0;
+let cach = [];
+function infoCache(){cac=[ca];for(let i=0;i<cac.length;i++){cach[i]=JSON.parse(cac[i]);}}
+function checkFw() {
+let ua = navigator.userAgent;fwVersion = ua.substring(ua.indexOf("5.0 (")+19,ua.indexOf(") Apple"));return fwVersion;}//return fwVersion = "6.72";
+function user_agent(){let ua=navigator.userAgent, client=ua.substring(ua.indexOf("(")+1, ua.indexOf(") Apple")-5);return client;}  
+if (checkFw() === "6.72") {
+window.applicationCache.ondownloading = function () {const message = document.getElementById("message");const overlay = document.getElementById("cache-overlay");const progress = document.getElementById("progress");message.innerHTML = '<div class="green">' + cach[0][defaultLangue].goodfw + checkFw() + cach[0][defaultLangue].goodfw2 + "</div>";};
+window.applicationCache.onnoupdate = function () {document.cookie = "spoof=no";load_JB();};
+window.applicationCache.oncached=function(){overlay.style.display = "none";message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";setTimeout(function(){message.innerHTML = "";load_JB();},1000);};
+window.applicationCache.onupdateready=function(){window.applicationCache.swapCache();overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>"; setTimeout(function () {message.innerHTML = "";load_JB();},1000);};
+window.applicationCache.onprogress=function(a){overlay.style.display = "block";progress.innerHTML = '<div align="center" id="mybar"></div>';let mybar = document.getElementById("mybar");nb = Math.round(100 * (a.loaded / a.total)); mybar.style.width = nb + "%";if (nb == 0) { mybar.innerHTML = ""; }else { mybar.innerHTML = nb + "%"; }};
+} else{if(user_agent()==="PlayStation 4")alertfirmware=true;}
+</script>
+<script src="assets/js/functions.js"></script>
+<script>function print() { }</script>
+<script src="common/exploit.js"></script>
+<script>let defaultLangue;if(getCookie("language")===null){createCookie("language","french");defaultLangue=0;}else{switch(readCookie("language")) {case "french":defaultLangue=0;break;case "english":defaultLangue=1;break;}}
+</script>
+<header id="header"><div id="content-title" class="content-title"></div></header>
+<div class="overlay" id="cache-overlay"><div id="progress"></div></div>
+<div id="curseur" class="infobubble"></div>
+<div id="language" class="hidelanguage"></div>
+<div id="choicelangue"><button>Language</button></div>
+<div id="message" class="message"></div>
+<div id="menulist"></div>
+<div id="cs-loader" class="cs-loader">
+<div class="cs-loader-inner">
+<label></label><label></label><label></label><label></label><label></label><label></label></div></div><hr>
+<footer id="footer">
+<div class="container-fluid">
+<div class="row">
+<div class="col-4"><div id="fanprogress" class="fanprogress"></div></div>
+<div class="col-2"><div id="boxip" class="boxip"></div></div>
+<div id="btn-switch" class="col-4">
+<div class="row">
+ <div class="col-2"><div class="info-switch">FTP :</div>
+<label class="switch"><input id="ftp" type="checkbox"><span id="btn-switch-ftp" class="slider-red round"></span></label></div>
+<div class="col-2"><div class="info-switch">Infos :</div>
+<label class="switch"><input id="bubble" type="checkbox"><span id="btn-switch-bubble" class="slider-red round"></span></label></div>
+<div class="col-2"><div class="info-switch">Hen :</div><label class="switch"><input id="henvtx" type="checkbox"><span id="btn-switch-henvtx" class="slider-red round"></span></label></div>
+<div class="col-2"><div class="info-switch">Mira :</div><label class="switch"><input id="mira" type="checkbox"><span id="btn-switch-mira" class="slider-red round"></span></label></div>
+<div class="col-2"><div class="info-switch">Fan :</div><label class="switch"><input id="fancontrol" type="checkbox"><span id="btn-switch-fancontrol" class="slider-red round"></span></label></div>
+</div></div><div class="col-2"> <div id="firmware"></div></div></div></div></div>
+</footer>
+<link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/default.css">
+<script src="assets/lang/ca.json"></script>
+<script>infoCache();</script>
+<script src="assets/lang/server.json"></script>
+<script src="assets/lang/scrolling.json"></script>
+<script src="assets/lang/payload.json"></script>
+<script src="assets/lang/home.json"></script>
+<script src="assets/lang/rpi.json"></script>
+<script src="assets/bootstrap/jquery-3.3.1.min.js"></script>
+<script src="assets/bootstrap/popper.min.js"></script>
+<script src="assets/bootstrap/bootstrap.min.js"></script>
+<script src="assets/js/sha.js"></script>
+<script src="assets/js/style.js"></script>
+<script src="https://kit.fontawesome.com/5cea6bf66d.js" crossorigin="anonymous"></script>
+</body>
+</html>
